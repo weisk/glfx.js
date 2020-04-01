@@ -6,7 +6,7 @@ function Filter(name, func, init, update, imageFile) {
     this.name = name;
     this.func = func;
     this.update = update;
-    this.imageFile = imageFile;
+    this.imageFile = imageFile || 'pic1.jpg';
     this.sliders = [];
     this.nubs = [];
     init.call(this);
@@ -28,7 +28,7 @@ Filter.prototype.setCode = function(code) {
 Filter.prototype.use = function() {
     // Load the texture from the image and draw it to the canvas
     // var image = images[this.imageFile || 'image.jpg'];
-    var image = images[this.imageFile || 'pacino.jpg'];
+    var image = images[this.imageFile || 'pic1.jpg'];
     texture = image.texture;
     $('#container').css({ width: texture._.width, height: texture._.height });
     $('#label').html('Image credit: <a href="' + image.url + '">' + image.credit + '</a>');
@@ -98,12 +98,15 @@ var images = {
     'image.jpg': { credit: 'matthigh', url: 'http://www.flickr.com/photos/matthigh/2125630879/' },
     'lighthouse.jpg': { credit: 'renet', url: 'http://www.flickr.com/photos/renet/12135813/' },
     'perspective.jpg': { credit: 'stuckincustoms', url: 'http://www.flickr.com/photos/stuckincustoms/1213760517/' },
-    'pacino.jpg': { credit: 'pacino', url: 'https://weisk.github.io/glfx.js/media/pacino.jpg'}
+    'pic1.jpg': { credit: 'pacino', url: 'https://weisk.github.io/glfx.js/media/pic1.jpg'},
+    'pic2.jpg': { credit: 'pacino', url: 'https://weisk.github.io/glfx.js/media/pic2.jpg'},
 };
 for (var file in images) {
     var image = images[file].image = new Image();
     image.onload = init;
-    image.src = '/glfx.js/media/' + file;
+    image.src = '/media/' + file;
+    image.height = 479;
+    image.width = 640;
     loadCount++;
 }
 

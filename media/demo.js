@@ -104,7 +104,7 @@ var images = {
 for (var file in images) {
     var image = images[file].image = new Image();
     image.onload = init;
-    image.src = '/media/' + file;
+    image.src = 'glfx.js/media/' + file;
     image.height = 479;
     image.width = 640;
     loadCount++;
